@@ -1,0 +1,12 @@
+---
+- include_tasks: remove-ha-all-policy.yml
+  when:
+    - not om_enable_rabbitmq_high_availability | bool
+
+- import_tasks: config.yml
+
+- import_tasks: feature-flags.yml
+
+- include_tasks: check-containers.yml
+  vars:
+    rabbitmq_image: "{{ docker_registry ~ '/' if docker_registry else '' }}{{ docker_namespace }}/rabbitmq-{{ rabbitmq_version_suffix }}"

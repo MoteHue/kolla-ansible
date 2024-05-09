@@ -181,35 +181,36 @@ Environment variables:
     EXTRA_OPTS                         Additional arguments to pass to ansible-playbook
 
 Commands:
-    install-deps         Install Ansible Galaxy dependencies
-    prechecks            Do pre-deployment checks for hosts
-    mariadb_recovery     Recover a completely stopped mariadb cluster
-    mariadb_backup       Take a backup of MariaDB databases
-                             --full (default)
-                             --incremental
-    bootstrap-servers    Bootstrap servers with kolla deploy dependencies
-    destroy              Destroy Kolla containers, volumes and host configuration
-                             --include-images to also destroy Kolla images
-                             --include-dev to also destroy dev mode repos
-    deploy               Deploy and start all kolla containers
-    deploy-bifrost       Deploy and start bifrost container
-    deploy-servers       Enroll and deploy servers with bifrost
-    deploy-containers    Only deploy and start containers (no config updates or bootstrapping)
-    gather-facts         Gather Ansible facts
-    post-deploy          Do post deploy on deploy node
-    pull                 Pull all images for containers (only pulls, no running container changes)
-    rabbitmq-reset-state Force reset the state of RabbitMQ
-    reconfigure          Reconfigure OpenStack service
-    stop                 Stop Kolla containers
-    certificates         Generate self-signed certificate for TLS *For Development Only*
-    octavia-certificates Generate certificates for octavia deployment
-                             --check-expiry <days> to check if certificates expire within that many days
-    upgrade              Upgrades existing OpenStack Environment
-    upgrade-bifrost      Upgrades an existing bifrost container
-    genconfig            Generate configuration files for enabled OpenStack services
-    validate-config      Validate configuration files for enabled OpenStack services
-    prune-images         Prune orphaned Kolla images
-    nova-libvirt-cleanup Clean up disabled nova_libvirt containers
+    install-deps               Install Ansible Galaxy dependencies
+    prechecks                  Do pre-deployment checks for hosts
+    mariadb_recovery           Recover a completely stopped mariadb cluster
+    mariadb_backup             Take a backup of MariaDB databases
+                                   --full (default)
+                                   --incremental
+    bootstrap-servers          Bootstrap servers with kolla deploy dependencies
+    destroy                    Destroy Kolla containers, volumes and host configuration
+                                   --include-images to also destroy Kolla images
+                                   --include-dev to also destroy dev mode repos
+    deploy                     Deploy and start all kolla containers
+    deploy-bifrost             Deploy and start bifrost container
+    deploy-servers             Enroll and deploy servers with bifrost
+    deploy-containers          Only deploy and start containers (no config updates or bootstrapping)
+    gather-facts               Gather Ansible facts
+    post-deploy                Do post deploy on deploy node
+    pull                       Pull all images for containers (only pulls, no running container changes)
+    rabbitmq-reset-state       Force reset the state of RabbitMQ
+    rabbitmq-upgrade <version> Upgrade to a specific version of RabbitMQ
+    reconfigure                Reconfigure OpenStack service
+    stop                       Stop Kolla containers
+    certificates               Generate self-signed certificate for TLS *For Development Only*
+    octavia-certificates       Generate certificates for octavia deployment
+                                   --check-expiry <days> to check if certificates expire within that many days
+    upgrade                    Upgrades existing OpenStack Environment
+    upgrade-bifrost            Upgrades an existing bifrost container
+    genconfig                  Generate configuration files for enabled OpenStack services
+    validate-config            Validate configuration files for enabled OpenStack services
+    prune-images               Prune orphaned Kolla images
+    nova-libvirt-cleanup       Clean up disabled nova_libvirt containers
 EOF
 }
 
@@ -247,6 +248,7 @@ gather-facts
 post-deploy
 pull
 rabbitmq-reset-state
+rabbitmq-upgrade
 reconfigure
 stop
 certificates
@@ -571,6 +573,12 @@ EOF
 (rabbitmq-reset-state)
         ACTION="Force reset the state of RabbitMQ"
         PLAYBOOK="${BASEDIR}/ansible/rabbitmq-reset-state.yml"
+        ;;
+(rabbitmq-upgrade)
+        RMQ_VERSION="$2"
+        ACTION="Upgrade to a specific version of RabbitMQ"
+        PLAYBOOK="${BASEDIR}/ansible/rabbitmq-upgrade.yml"
+        EXTRA_OPTS="$EXTRA_OPTS -e rabbitmq_version_suffix=${RMQ_VERSION}"
         ;;
 (bash-completion)
         bash_completion

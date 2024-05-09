@@ -128,7 +128,7 @@ additional steps needed to migrate from transient to durable queues.
 .. warning::
 
    Since the default changed from non-HA to Quorum queues in Bobcat release,
-   following procedure is required to be carried out before an upgrade.
+   following procedure is required to be carried out before a SLURP upgrade.
 
 1. Stop all OpenStack services which use RabbitMQ, so that they will not
    attempt to recreate any queues yet.
@@ -163,3 +163,8 @@ additional steps needed to migrate from transient to durable queues.
    .. code-block:: console
 
       kolla-ansible deploy --tags <service-tags>
+
+SLURP
+~~~~~
+
+If you want to upgrade to version 3.12.X, use the command kolla-ansible rabbitmq-upgrade 3-12

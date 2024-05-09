@@ -1,0 +1,35 @@
+---
+- block:
+    - name: Get container facts
+      become: true
+      kolla_container_facts:
+        container_engine: "{{ kolla_container_engine }}"
+        name:
+          - "{{ service.container_name }}"
+      register: container_facts
+
+    - block:
+        - name: Get RabbitMQ version
+          become: true
+          command: "{{ kolla_container_engine }} exec {{ service.container_name }} rabbitmqctl --version"
+          register: rabbitmq_version
+          changed_when: false
+
+        - name: Check if RabbitMQ is at most one version behind
+          assert:
+            that: rabbitmq_version.stdout | regex_replace('.[^.]+$', '') | float >= 3.12
+            fail_msg: >
+              Looks like you're trying to run a skip-release upgrade!
+              RabbitMQ must be at most one version behind the current release version (3.13) to run this upgrade.
+              You are running {{ rabbitmq_version.stdout }}.
+              Please sequentially upgrade with the command ``kolla-ansible rabbitmq-upgrade 3-12``.
+              See these docs for details: https://docs.openstack.org/kolla-ansible/2024.1/reference/message-queues/rabbitmq.html#slurp
+      when: container_facts[service.container_name] is defined
+
+  delegate_to: "{{ groups[role_rabbitmq_groups] | first }}"
+  run_once: true
+  vars:
+    service_name: "rabbitmq"
+    service: "{{ rabbitmq_services[service_name] }}"
+  tags: rabbitmq-version-check
+  when: do_rabbitmq_version_check | default(true)
