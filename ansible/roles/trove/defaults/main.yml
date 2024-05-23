@@ -8,6 +8,7 @@ trove_services:
     volumes: "{{ trove_api_default_volumes + trove_api_extra_volumes }}"
     dimensions: "{{ trove_api_dimensions }}"
     healthcheck: "{{ trove_api_healthcheck }}"
+    single_external_frontend: "{{ trove_single_external_frontend }}"
     haproxy:
       trove_api:
         enabled: "{{ enable_trove }}"

@@ -45,7 +45,8 @@
   become: true
   with_dict: "{{ project_services }}"
   when:
-    - haproxy_single_external_frontend | bool
+    - service.single_external_frontend is defined
+    - service.single_external_frontend | bool
     - service.enabled | bool
     - service.haproxy is defined
     - enable_haproxy | bool

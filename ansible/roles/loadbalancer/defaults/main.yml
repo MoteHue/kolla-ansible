@@ -197,3 +197,49 @@ haproxy_external_single_frontend_options:
   - "timeout client {{ haproxy_glance_api_client_timeout }}"
 
 haproxy_glance_api_client_timeout: "6h"
+
+haproxy_single_external_frontend_bool: >
+  {{ aodh_single_external_frontend or
+  barbican_single_external_frontend or
+  blazar_single_external_frontend or
+  ceph_single_external_frontend or
+  cinder_single_external_frontend or
+  cloudkitty_single_external_frontend or
+  designate_single_external_frontend or
+  freezer_single_external_frontend or
+  glance_single_external_frontend or
+  gnocchi_single_external_frontend or
+  grafana_single_external_frontend or
+  haproxy_single_external_frontend or
+  heat_single_external_frontend or
+  heat_cfn_single_external_frontend or
+  ironic_single_external_frontend or
+  ironic_inspector_single_external_frontend or
+  keystone_single_external_frontend or
+  magnum_single_external_frontend or
+  manila_single_external_frontend or
+  masakari_single_external_frontend or
+  mistral_single_external_frontend or
+  murano_single_external_frontend or
+  neutron_single_external_frontend or
+  nova_single_external_frontend or
+  nova_novncproxy_single_external_frontend or
+  nova_spicehtml5proxy_single_external_frontend or
+  nova_serialproxy_single_external_frontend or
+  octavia_single_external_frontend or
+  opensearch_single_external_frontend or
+  placement_single_external_frontend or
+  prometheus_single_external_frontend or
+  prometheus_alertmanager_single_external_frontend or
+  sahara_single_external_frontend or
+  senlin_single_external_frontend or
+  skyline_single_external_frontend or
+  skyline_console_single_external_frontend or
+  solum_application_deployment_single_external_frontend or
+  solum_image_builder_single_external_frontend or
+  tacker_single_external_frontend or
+  trove_single_external_frontend or
+  venus_single_external_frontend or
+  vitrage_single_external_frontend or
+  watcher_single_external_frontend or
+  zun_single_external_frontend }}

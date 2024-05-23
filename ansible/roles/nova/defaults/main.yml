@@ -9,6 +9,7 @@ nova_services:
     volumes: "{{ nova_api_default_volumes + nova_api_extra_volumes }}"
     dimensions: "{{ nova_api_dimensions }}"
     healthcheck: "{{ nova_api_healthcheck }}"
+    single_external_frontend: "{{ nova_single_external_frontend }}"
     haproxy:
       nova_api:
         enabled: "{{ enable_nova }}"

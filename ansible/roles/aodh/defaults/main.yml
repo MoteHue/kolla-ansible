@@ -8,6 +8,7 @@ aodh_services:
     volumes: "{{ aodh_api_default_volumes + aodh_api_extra_volumes }}"
     dimensions: "{{ aodh_api_dimensions }}"
     healthcheck: "{{ aodh_api_healthcheck }}"
+    single_external_frontend: "{{ aodh_single_external_frontend }}"
     haproxy:
       aodh_api:
         enabled: "{{ enable_aodh }}"

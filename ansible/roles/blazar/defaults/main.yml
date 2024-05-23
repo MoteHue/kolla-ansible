@@ -8,6 +8,7 @@ blazar_services:
     volumes: "{{ blazar_api_default_volumes + blazar_api_extra_volumes }}"
     dimensions: "{{ blazar_api_dimensions }}"
     healthcheck: "{{ blazar_api_healthcheck }}"
+    single_external_frontend: "{{ blazar_single_external_frontend }}"
     haproxy:
       blazar_api:
         enabled: "{{ enable_blazar }}"

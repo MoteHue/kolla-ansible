@@ -7,6 +7,7 @@ grafana_services:
     image: "{{ grafana_image_full }}"
     volumes: "{{ grafana_default_volumes + grafana_extra_volumes }}"
     dimensions: "{{ grafana_dimensions }}"
+    single_external_frontend: "{{ grafana_single_external_frontend }}"
     haproxy:
       grafana_server:
         enabled: "{{ enable_grafana }}"

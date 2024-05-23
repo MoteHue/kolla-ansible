@@ -8,6 +8,7 @@ cinder_services:
     volumes: "{{ cinder_api_default_volumes + cinder_api_extra_volumes }}"
     dimensions: "{{ cinder_api_dimensions }}"
     healthcheck: "{{ cinder_api_healthcheck }}"
+    single_external_frontend: "{{ cinder_single_external_frontend }}"
     haproxy:
       cinder_api:
         enabled: "{{ enable_cinder }}"

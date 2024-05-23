@@ -8,6 +8,7 @@ placement_services:
     volumes: "{{ placement_api_default_volumes + placement_api_extra_volumes }}"
     dimensions: "{{ placement_api_dimensions }}"
     healthcheck: "{{ placement_api_healthcheck }}"
+    single_external_frontend: "{{ placement_single_external_frontend }}"
     haproxy:
       placement_api:
         enabled: "{{ enable_placement }}"

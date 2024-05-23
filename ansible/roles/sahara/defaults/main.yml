@@ -8,6 +8,7 @@ sahara_services:
     volumes: "{{ sahara_api_default_volumes + sahara_api_extra_volumes }}"
     dimensions: "{{ sahara_api_dimensions }}"
     healthcheck: "{{ sahara_api_healthcheck }}"
+    single_external_frontend: "{{ sahara_single_external_frontend }}"
     haproxy:
       sahara_api:
         enabled: "{{ enable_sahara }}"

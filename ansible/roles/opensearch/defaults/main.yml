@@ -10,6 +10,7 @@ opensearch_services:
     volumes: "{{ opensearch_default_volumes + opensearch_extra_volumes }}"
     dimensions: "{{ opensearch_dimensions }}"
     healthcheck: "{{ opensearch_healthcheck }}"
+    single_external_frontend: "{{ opensearch_single_external_frontend }}"
     haproxy:
       opensearch:
         enabled: "{{ enable_opensearch }}"

@@ -9,6 +9,7 @@ neutron_services:
     volumes: "{{ neutron_server_default_volumes + neutron_server_extra_volumes }}"
     dimensions: "{{ neutron_server_dimensions }}"
     healthcheck: "{{ neutron_server_healthcheck }}"
+    single_external_frontend: "{{ neutron_single_external_frontend }}"
     haproxy:
       neutron_server:
         enabled: "{{ enable_neutron | bool and not neutron_enable_tls_backend | bool }}"

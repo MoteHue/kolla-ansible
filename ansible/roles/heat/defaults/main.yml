@@ -8,6 +8,7 @@ heat_services:
     volumes: "{{ heat_api_default_volumes + heat_api_extra_volumes }}"
     dimensions: "{{ heat_api_dimensions }}"
     healthcheck: "{{ heat_api_healthcheck }}"
+    single_external_frontend: "{{ heat_single_external_frontend }}"
     haproxy:
       heat_api:
         enabled: "{{ enable_heat }}"
@@ -32,6 +33,7 @@ heat_services:
     volumes: "{{ heat_api_cfn_default_volumes + heat_api_cfn_extra_volumes }}"
     dimensions: "{{ heat_api_cfn_dimensions }}"
     healthcheck: "{{ heat_api_cfn_healthcheck }}"
+    single_external_frontend: "{{ heat_cfn_single_external_frontend }}"
     haproxy:
       heat_api_cfn:
         enabled: "{{ enable_heat }}"

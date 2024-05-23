@@ -8,6 +8,7 @@ zun_services:
     volumes: "{{ zun_api_default_volumes + zun_api_extra_volumes }}"
     dimensions: "{{ zun_api_dimensions }}"
     healthcheck: "{{ zun_api_healthcheck }}"
+    single_external_frontend: "{{ zun_single_external_frontend }}"
     haproxy:
       zun_api:
         enabled: "{{ enable_zun }}"

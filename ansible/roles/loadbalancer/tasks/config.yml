@@ -159,6 +159,10 @@
   notify:
     - Restart proxysql container
 
+- name: Debug
+  debug:
+    msg: "{{ haproxy_single_external_frontend_bool }}"
+
 - name: Copying over haproxy single external frontend config
   vars:
     service: "{{ loadbalancer_services['haproxy'] }}"
@@ -170,7 +174,7 @@
   when:
     - inventory_hostname in groups[service.group]
     - service.enabled | bool
-    - haproxy_single_external_frontend | bool
+    - haproxy_single_external_frontend_bool | bool
   notify:
     - Restart haproxy container
 

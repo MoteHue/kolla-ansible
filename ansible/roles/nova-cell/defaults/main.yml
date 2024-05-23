@@ -27,6 +27,7 @@ nova_cell_services:
     volumes: "{{ nova_novncproxy_default_volumes + nova_novncproxy_extra_volumes }}"
     dimensions: "{{ nova_novncproxy_dimensions }}"
     healthcheck: "{{ nova_novncproxy_healthcheck }}"
+    single_external_frontend: "{{ nova_novncproxy_single_external_frontend }}"
   nova-spicehtml5proxy:
     container_name: "nova_spicehtml5proxy"
     group: "{{ nova_cell_spicehtml5proxy_group }}"
@@ -35,6 +36,7 @@ nova_cell_services:
     volumes: "{{ nova_spicehtml5proxy_default_volumes + nova_spicehtml5proxy_extra_volumes }}"
     dimensions: "{{ nova_spicehtml5proxy_dimensions }}"
     healthcheck: "{{ nova_spicehtml5proxy_healthcheck }}"
+    single_external_frontend: "{{ nova_spicehtml5proxy_single_external_frontend }}"
   nova-serialproxy:
     container_name: "nova_serialproxy"
     group: "{{ nova_cell_serialproxy_group }}"
@@ -42,6 +44,7 @@ nova_cell_services:
     enabled: "{{ enable_nova_serialconsole_proxy | bool }}"
     volumes: "{{ nova_serialproxy_default_volumes + nova_serialproxy_extra_volumes }}"
     dimensions: "{{ nova_serialproxy_dimensions }}"
+    single_external_frontend: "{{ nova_serialproxy_single_external_frontend }}"
   nova-conductor:
     container_name: "nova_conductor"
     group: "{{ nova_cell_conductor_group }}"

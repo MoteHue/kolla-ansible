@@ -8,6 +8,7 @@ barbican_services:
     volumes: "{{ barbican_api_default_volumes + barbican_api_extra_volumes }}"
     dimensions: "{{ barbican_api_dimensions }}"
     healthcheck: "{{ barbican_api_healthcheck }}"
+    single_external_frontend: "{{ barbican_single_external_frontend }}"
     haproxy:
       barbican_api:
         enabled: "{{ enable_barbican }}"

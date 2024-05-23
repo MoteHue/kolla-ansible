@@ -7,6 +7,7 @@ masakari_services:
     image: "{{ masakari_api_image_full }}"
     volumes: "{{ masakari_api_default_volumes + masakari_api_extra_volumes }}"
     dimensions: "{{ masakari_api_dimensions }}"
+    single_external_frontend: "{{ masakari_single_external_frontend }}"
     haproxy:
       masakari_api:
         enabled: "{{ enable_masakari }}"

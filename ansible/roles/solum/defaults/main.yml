@@ -40,6 +40,7 @@ solum_services:
         port: "{{ solum_application_deployment_public_port }}"
         listen_port: "{{ solum_application_deployment_listen_port }}"
         host_group: "solum-application-deployment"
+        single_external_frontend: "{{ solum_application_deployment_single_external_frontend }}"
       solum_image_builder:
         enabled: "{{ enable_solum }}"
         mode: "http"
@@ -55,6 +56,7 @@ solum_services:
         port: "{{ solum_image_builder_public_port }}"
         listen_port: "{{ solum_image_builder_listen_port }}"
         host_group: "solum-image-builder"
+        single_external_frontend: "{{ solum_image_builder_single_external_frontend }}"
   solum-conductor:
     container_name: solum_conductor
     group: solum-conductor

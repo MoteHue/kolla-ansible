@@ -8,6 +8,7 @@ designate_services:
     volumes: "{{ designate_api_default_volumes + designate_api_extra_volumes }}"
     dimensions: "{{ designate_api_dimensions }}"
     healthcheck: "{{ designate_api_healthcheck }}"
+    single_external_frontend: "{{ cloudkitty_single_external_frontend }}"
     haproxy:
       designate_api:
         enabled: "{{ enable_designate }}"

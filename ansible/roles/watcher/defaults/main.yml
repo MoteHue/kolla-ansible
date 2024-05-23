@@ -8,6 +8,7 @@ watcher_services:
     volumes: "{{ watcher_api_default_volumes + watcher_api_extra_volumes }}"
     dimensions: "{{ watcher_api_dimensions }}"
     healthcheck: "{{ watcher_api_healthcheck }}"
+    single_external_frontend: "{{ watcher_single_external_frontend }}"
     haproxy:
       watcher_api:
         enabled: "{{ enable_watcher }}"

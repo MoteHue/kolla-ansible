@@ -8,6 +8,7 @@ keystone_services:
     volumes: "{{ keystone_default_volumes + keystone_extra_volumes }}"
     dimensions: "{{ keystone_dimensions }}"
     healthcheck: "{{ keystone_healthcheck }}"
+    single_external_frontend: "{{ keystone_single_external_frontend }}"
     haproxy:
       keystone_internal:
         enabled: "{{ enable_keystone }}"

@@ -5,6 +5,7 @@ ceph_rgw_services:
   ceph-rgw:
     group: "all"
     enabled: "{{ enable_ceph_rgw | bool }}"
+    single_external_frontend: "{{ ceph_rgw_single_external_frontend }}"
     haproxy:
       radosgw:
         enabled: "{{ enable_ceph_rgw_loadbalancer | bool }}"

@@ -10,6 +10,7 @@ magnum_services:
     volumes: "{{ magnum_api_default_volumes + magnum_api_extra_volumes }}"
     dimensions: "{{ magnum_api_dimensions }}"
     healthcheck: "{{ magnum_api_healthcheck }}"
+    single_external_frontend: "{{ magnum_single_external_frontend }}"
     haproxy:
       magnum_api:
         enabled: "{{ enable_magnum }}"

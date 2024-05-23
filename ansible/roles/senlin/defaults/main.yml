@@ -8,6 +8,7 @@ senlin_services:
     volumes: "{{ senlin_api_default_volumes + senlin_api_extra_volumes }}"
     dimensions: "{{ senlin_api_dimensions }}"
     healthcheck: "{{ senlin_api_healthcheck }}"
+    single_external_frontend: "{{ senlin_single_external_frontend }}"
     haproxy:
       senlin_api:
         enabled: "{{ enable_senlin }}"

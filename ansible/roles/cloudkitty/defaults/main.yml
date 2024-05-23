@@ -8,6 +8,7 @@ cloudkitty_services:
     volumes: "{{ cloudkitty_api_default_volumes + cloudkitty_api_extra_volumes }}"
     dimensions: "{{ cloudkitty_api_dimensions }}"
     healthcheck: "{{ cloudkitty_api_healthcheck }}"
+    single_external_frontend: "{{ cloudkitty_single_external_frontend }}"
     haproxy:
       cloudkitty_api:
         enabled: "{{ enable_cloudkitty }}"

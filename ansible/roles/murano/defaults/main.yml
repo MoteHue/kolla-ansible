@@ -7,6 +7,7 @@ murano_services:
     image: "{{ murano_api_image_full }}"
     volumes: "{{ murano_api_default_volumes + murano_api_extra_volumes }}"
     dimensions: "{{ murano_api_dimensions }}"
+    single_external_frontend: "{{ murano_single_external_frontend }}"
     haproxy:
       murano_api:
         enabled: "{{ enable_murano }}"

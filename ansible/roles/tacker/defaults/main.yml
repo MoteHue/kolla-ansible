@@ -9,6 +9,7 @@ tacker_services:
     volumes: "{{ tacker_server_default_volumes + tacker_server_extra_volumes }}"
     dimensions: "{{ tacker_server_dimensions }}"
     healthcheck: "{{ tacker_server_healthcheck }}"
+    single_external_frontend: "{{ tacker_single_external_frontend }}"
     haproxy:
       tacker_server:
         enabled: "{{ enable_tacker }}"

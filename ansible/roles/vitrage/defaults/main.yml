@@ -8,6 +8,7 @@ vitrage_services:
     volumes: "{{ vitrage_api_default_volumes + vitrage_api_extra_volumes }}"
     dimensions: "{{ vitrage_api_dimensions }}"
     healthcheck: "{{ vitrage_api_healthcheck }}"
+    single_external_frontend: "{{ vitrage_single_external_frontend }}"
     haproxy:
       vitrage_api:
         enabled: "{{ enable_vitrage }}"

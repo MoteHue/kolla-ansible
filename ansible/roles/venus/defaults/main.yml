@@ -8,6 +8,7 @@ venus_services:
     volumes: "{{ venus_api_default_volumes + venus_api_extra_volumes }}"
     dimensions: "{{ venus_api_dimensions }}"
     healthcheck: "{{ venus_api_healthcheck }}"
+    single_external_frontend: "{{ venus_single_external_frontend }}"
     haproxy:
       venus_api:
         enabled: "{{ enable_venus }}"

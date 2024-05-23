@@ -8,6 +8,7 @@ gnocchi_services:
     volumes: "{{ gnocchi_api_default_volumes + gnocchi_api_extra_volumes }}"
     dimensions: "{{ gnocchi_api_dimensions }}"
     healthcheck: "{{ gnocchi_api_healthcheck }}"
+    single_external_frontend: "{{ gnocchi_single_external_frontend }}"
     haproxy:
       gnocchi_api:
         enabled: "{{ enable_gnocchi }}"
